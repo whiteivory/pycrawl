@@ -6,7 +6,6 @@
 from urllib2 import Request, URLError, urlopen, ProxyHandler
 import urllib2
 import cookielib
-import re
 import urllib
 import os
 import chardet
@@ -17,7 +16,7 @@ import json
 import atexit
 
 #单例类
-class Pycrwal:
+class Pycrawl:
 	__instance=None
 	def __new__(cls,*args,**kwd):
 		if Urlsingle.__instance is None:
@@ -68,7 +67,7 @@ class Pycrwal:
 	#用法示例
 	def save_pic_urllib(self,save_path, pic_url, pic_title, pic_type,header = None):
 		if header == None:
-			if hasattr(Pycrwal, 'header'):
+			if hasattr(self, 'header'):
 				header = self.header
 			#assert header!=none
 			else:
@@ -87,7 +86,7 @@ class Pycrwal:
 				#然后encode成gbk字节流供操作系统识别，或者原封不动把原编码字节流写进去，windows直接用gbk解码显示，
 				#和cmd不同的是，windows文件系统如果解码不出来某个字符不会像cmd抛出异常而是用默认字符显示
 				#二是传入一个unicode对象，那么就直接对这个unicode对象encode成gbk就可以了，显然这一种方法不容易乱码
-				f=open(save_pic_name.decode('utf-8'),'wb')#必须是二进制形式，否则会图片乱码
+				f=open(save_pic_name,'wb')#必须是二进制形式，否则会图片乱码
 				print >>f,html_content
 				return 1
 			else :#图片失效，进行log
