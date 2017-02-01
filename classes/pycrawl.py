@@ -63,8 +63,7 @@ class Pycrawl:
 		return html_content
 
 	#保存图片仍然设计get_url_content,所以需要header，不传则默认用get_url_content
-	#要求传入参数为'utf-8'对象（mark：待改为str流）
-	#用法示例
+	#要求传入参数为'GB2312'对象,才能正确保存文件名
 	def save_pic_urllib(self,save_path, pic_url, pic_title, pic_type,header = None):
 		if header == None:
 			if hasattr(self, 'header'):

@@ -33,13 +33,13 @@ pc = Pycrawl()
 header_dic ={}
 header_dic['User-Agent'] = urlsingle._useragent_f
 
-for index in range(5,29):
+for index in range(1,18):
 	url = urlsingle._scrapyurl%index
 	html_content = pc.get_url_content(header_dic,url)
 	# print chardet.detect(html_content) #GB2312
 	if html_content:
-		f=open('out.txt','w')
-		print >>f,html_content 
+		#f=open('out.txt','w')
+		#print >>f,html_content 
 		ret = get_pic_title_and_url(html_content)
 		# print len(ret)
 		save_path = "savejpdir\\"+str(index)+"\\"
