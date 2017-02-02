@@ -17,6 +17,7 @@ import logging
 import sys
 
 #custom：按照查看次数排序，如果正常模式则将mod=0
+#改成0的同时要改pmj.json换url
 mod =1 
 
 #单例类初始化
@@ -55,6 +56,7 @@ def get_pics(html_content):
 	tmp =  patten.findall(html_content)
 	return tmp
 
+#tid是sonhtml的id
 def get_tid(str):
 	reg = '(?:.*?)tid=(.*?)&'
 	patten = re.compile(reg,re.S)
@@ -83,7 +85,7 @@ for index in range(1,35):
 			#如果不按，则修改全局变量mod=0
 			if mod == 1:
 				tid = get_tid(son_url)
-				son_url ="thread-"+str(tid)+"-1-"+str(index)+".html"
+				son_url ="thread-"+str(tid)+"-1-1.html"
 
 			if pic_url[0] != 'h' and pic_url[1]!='t':
 				pic_url = urlsingle._rooturl + pic_url 

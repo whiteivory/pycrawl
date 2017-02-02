@@ -18,7 +18,7 @@ import sys
 
 #custom：按照查看次数排序，如果正常模式则将mod=0
 #同时要改mj.json
-mod =0 
+mod =1
 
 #单例类初始化
 urlsingle = Urlsingle()
@@ -66,7 +66,7 @@ def get_code(html_content):
 		code = tmp[0]
 	return code
 
-for index in range(1,5):
+for index in range(1,18):
 	print 'download page' + str(index)
 	logging.info('download page'+str(index))
 	url = urlsingle._scrapyurl%index
@@ -88,7 +88,8 @@ for index in range(1,5):
 			#custom
 			if mod == 1:
 				tid = get_tid(son_url)
-				son_url ="thread-"+str(tid)+"-1-"+str(index)+".html"
+				son_url ="thread-"+str(tid)+"-1-1.html"#这里无所谓后面两个数是什么
+
 
 			if pic_url[0] != 'h' and pic_url[1]!='t':
 				pic_url = urlsingle._rooturl + pic_url
@@ -96,8 +97,6 @@ for index in range(1,5):
 			#print pic_url
 
 			url4code = urlsingle._rooturl +son_url+"/"
-			#print url4code
-			#print url4code
 			son_html = pc.get_url_content(header_dic,url4code,5,5)
 			if son_html:
 				f=open('out.txt','w')
