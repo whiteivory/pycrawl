@@ -64,6 +64,8 @@ class Pycrawl:
 
 	#保存图片仍然设计get_url_content,所以需要header，不传则默认用get_url_content
 	#要求传入参数为'GB2312'对象,才能正确保存文件名
+	#@todo:这个在fc里面是不行的，韩文会出错，所以最正确的方式应该是传入str，此函数内部不进行任何decode和encode
+	#修改后各个main里面也要进行修改，改成传入该函数为str 字符串
 	def save_pic_urllib(self,save_path, pic_url, pic_title, pic_type,header = None):
 		if header == None:
 			if hasattr(self, 'header'):
